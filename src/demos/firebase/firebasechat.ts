@@ -9,12 +9,12 @@ import {AngularFire, defaultFirebase, FIREBASE_PROVIDERS, FirebaseListObservable
     <input type="text" #newmessage />
     <button (click)="addMessage(newmessage)">send</button>
     <ul>
-      <li  *ngFor="#message of messages | async">{{ message.val().text }}</li>
+      <li *ngFor="#message of messages | async">{{ message.text }}</li>
     </ul>
   `,
   providers: [
     FIREBASE_PROVIDERS,
-    defaultFirebase('https://ngnl-chat.firebaseio.com/')
+    defaultFirebase('https://fluent-chat-demo.firebaseio.com/')
   ]
 })
 export class FirebaseChat {

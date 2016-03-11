@@ -1,5 +1,5 @@
-# ngnl_demos
-Demo code from my keynote at NGNL 2016. Slides [here](https://docs.google.com/presentation/d/1dC4oyxrE5IqDSJpKI_akszfFgBx24vC7YDYzmbrvnmM/edit?usp=sharing)
+# fluent_demos
+Demo code from Reactive Angular2 @ Fluent 2016. Slides [here](https://docs.google.com/presentation/d/1pBM3Is5SrXn_wmK_sF2BDXZUm44BmoUT_Ohg9da6K1k/edit?usp=sharing)
 
 ## instructions
 

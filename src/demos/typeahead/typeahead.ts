@@ -21,14 +21,15 @@ const makeURL = (query) => `${BASE_URL}?q=${query}&part=snippet&key=${API_TOKEN}
 class MyTypeahead {
   videos: Observable<any[]>;
   searchInput = new Control();
-  constructor(http:Http){
+  constructor(http: Http) {
     this.videos = this.searchInput.valueChanges
-      .debounceTime(200)
-      .map(query => makeURL(query))
-      .switchMap(url => http.get(url))
-      .map((res:Response) => res.json())
-      .map(response => response.items)
-      
+      //optionally debounce
+      //.debounceTime(300)
+      .map(inputText => makeURL(inputText))
+      //flatMap won't cancel in-flight requests, switchMap will...
+      //.flatMap(url => http.get(url).map(res => res.json()))
+      .switchMap(url => http.get(url).map(res => res.json()))
+      .map(response => response['items']);
   }
 }
 
@@ -38,11 +39,10 @@ class MyTypeahead {
   template: `
     <h2>typeahead demo</h2>
     <my-typeahead></my-typeahead>
-    <ul></ul>
   `,
   providers: [HTTP_PROVIDERS],
   directives: [MyTypeahead]
 })
 export class TypeaheadDemo {
-  constructor(private http:Http){}
+  constructor(private http: Http) { }
 }

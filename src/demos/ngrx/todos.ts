@@ -27,20 +27,3 @@ export const todos = (state = [], {type, payload}) => {
       return state;
   }
 }
-
-export const ALL = 'ALL'
-export const COMPLETE = 'COMPLETE'
-export const PENDING = 'PENDING'
-
-export const visibilityFilter = (state = (todo) => true, {type, payload}) => {
-  switch(type){
-    case ALL:
-      return (todo) => true;
-    case COMPLETE:
-      return (todo) => todo.completed;
-    case PENDING:
-      return (todo) => !todo.completed;
-    default:
-      return state;
-  }
-}

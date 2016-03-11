@@ -1,18 +1,19 @@
 {
-  "name": "ngnl-demos",
+  "name": "fluent-demos",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 8080 --content-base src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --inline --colors --display-error-details --display-cached --port 8000 --content-base src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "typings install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ngrx/store": "^1.2.1",
-    "angular2": "2.0.0-beta.8",
-    "angularfire2": "2.0.0-alpha.9",
+    "@ngrx/store": "1.3.3",
+    "angular2": "2.0.0-beta.9",
+    "angularfire2": "2.0.0-alpha.10",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "firebase": "^2.4.0",
