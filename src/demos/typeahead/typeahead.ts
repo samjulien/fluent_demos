@@ -14,7 +14,7 @@ const makeURL = (query) => `${BASE_URL}?q=${query}&part=snippet&key=${API_TOKEN}
   template: `
      <input type="text" placeholder="search youtube..." [ngFormControl]="searchInput">
      <ul>
-       <li *ngFor="#video of videos | async">{{video | json}}</li>
+       <li *ngFor="#video of videos | async">{{video.snippet.channelTitle}}: {{video.snippet.title}}</li>
      </ul>
   `
 })
@@ -27,8 +27,8 @@ class MyTypeahead {
       //.debounceTime(300)
       .map(inputText => makeURL(inputText))
       //flatMap won't cancel in-flight requests, switchMap will...
-      //.flatMap(url => http.get(url).map(res => res.json()))
-      .switchMap(url => http.get(url).map(res => res.json()))
+      .flatMap(url => http.get(url).map(res => res.json()))
+      //.switchMap(url => http.get(url).map(res => res.json()))
       .map(response => response['items']);
   }
 }
@@ -37,7 +37,7 @@ class MyTypeahead {
 @Component({
   selector: 'typeahead-demo',
   template: `
-    <h2>typeahead demo</h2>
+    <h2>Typeahead</h2>
     <my-typeahead></my-typeahead>
   `,
   providers: [HTTP_PROVIDERS],
